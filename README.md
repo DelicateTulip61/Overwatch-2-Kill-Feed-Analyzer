@@ -15,3 +15,22 @@ You will need Python installed. This tool relies on `dxcam` for high-performance
 Install the required dependencies:
 ```bash
 pip install dxcam opencv-python numpy pillow
+
+# Normal Mode: Launches the overlay and live analysis
+python ow2_killfeed.py
+
+# Record Mode: Silently saves kill feed crops to a /kf_samples folder
+python ow2_killfeed.py --record
+
+# Replay Mode: Replays saved frames offline to test HSV and logic 
+python ow2_killfeed.py --replay
+
+# Calibrate Mode: Live HSV mask viewer (useful for tuning color bounds)
+python ow2_killfeed.py --calibrate
+
+
+Depending on your monitor resolution and in-game UI settings, you may need to tweak the variables at the top of the script:
+
+SCREEN_REGION: Adjust the crop coordinates (default is (0, 0, 420, 220) for 1080p).
+
+ALLY_HSV_LOW / ENEMY_HSV_LOW: Adjust these if you use custom colorblind UI colors in Overwatch.
